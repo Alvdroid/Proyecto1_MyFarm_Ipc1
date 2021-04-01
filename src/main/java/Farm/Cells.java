@@ -5,10 +5,17 @@
  */
 package Farm;
 
+import Enums.TipoCelda;
+
 /**
  *
  * @author alvin
  */
-public class TypeCell {
+public abstract class Cells {
     
+    
+    protected TipoCelda tipoCelda;
+    
+    public abstract void tipoCelda(TipoCelda tipoCelda);
+   
 }

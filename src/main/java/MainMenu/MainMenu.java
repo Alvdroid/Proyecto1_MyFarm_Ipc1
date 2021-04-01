@@ -5,10 +5,18 @@
  */
 package MainMenu;
 
+import Farm.Farm;
+
 /**
  *
  * @author alvin
  */
 public class MainMenu {
     
+    public static void playGame(){
+    
+        Farm.farm();
+        Market.Market.market();
+        Reports.Reports.reports();
+    }
 }

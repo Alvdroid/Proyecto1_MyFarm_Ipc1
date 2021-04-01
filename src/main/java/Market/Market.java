@@ -10,5 +10,8 @@ package Market;
  * @author alvin
  */
 public class Market {
+    public static void market(){
     
+        
+    }
 }
