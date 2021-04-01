@@ -1,8 +1,8 @@
 
-package Menu_Principal;
+package MainMenu;
 
 
-public class Ejecutable{
+public class Executable{
     public static void main(String args[]){
         
     }
