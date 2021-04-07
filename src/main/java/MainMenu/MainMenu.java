@@ -5,7 +5,7 @@
  */
 package MainMenu;
 
-import Farm.Farm;
+import Farm.*;
 
 /**
  *
@@ -13,9 +13,10 @@ import Farm.Farm;
  */
 public class MainMenu {
     
-    public static void playGame(){
-    
-        Farm.farm();
+    public void MainMenu() throws InterruptedException{
+        
+        Farm farm = new Farm();
+        farm.Celdas();
         Market.Market.market();
         Reports.Reports.reports();
     }

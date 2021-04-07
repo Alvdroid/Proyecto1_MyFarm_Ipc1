@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Farm;
-
-import Enums.TipoCelda;
+package Oro;
 
 /**
  *
  * @author alvin
  */
-public abstract class Cells {
+public class Oro {
     
+    private double oro;
     
-    protected TipoCelda tipoCelda;
-    
-    public abstract void tipoCelda(TipoCelda tipoCelda);
-   
+    public double oro(double oro){
+        this.oro = oro;
+                
+        return this.oro;
+    }
 }
