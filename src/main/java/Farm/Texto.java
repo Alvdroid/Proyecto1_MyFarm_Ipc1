@@ -5,10 +5,20 @@
  */
 package Farm;
 
+import javax.swing.JLabel;
+
+
 /**
  *
  * @author alvin
  */
-public class Deset {
+public class Texto extends JLabel{
+    
+    private String texto;
+    
+    public Texto(String texto){
+        super(texto);
+        this.texto = texto;
+    }
     
 }

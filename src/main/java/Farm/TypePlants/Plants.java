@@ -5,10 +5,29 @@
  */
 package Farm.TypePlants;
 
+import Enums.TipoCelda;
+import Enums.TipoPlantas;
+import Farm.Grama;
+
 /**
  *
  * @author alvin
  */
-public class Plants {
+public abstract class Plants extends Grama{
     
+    protected String Nombre;
+    protected int cantidadCosecha;
+    protected int PrecioSemilla;
+    protected int TiempoCosecha;
+    protected TipoPlantas tipoPlanta;
+            
+    public Plants(String Nombre, int cantidadCosecha, int PrecioSemilla, int TiempoCosecha, TipoPlantas tipoPlanta) {
+        this.Nombre = Nombre;
+        this.cantidadCosecha = cantidadCosecha;
+        this.PrecioSemilla = PrecioSemilla;
+        this.TiempoCosecha = TiempoCosecha;
+        this.tipoPlanta = tipoPlanta;
+    }
+    
+    public abstract TipoPlantas TipoPlanta(TipoPlantas tipoPlanta);
 }

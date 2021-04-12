@@ -2,25 +2,49 @@
 
 package Farm;
 
-public class Farm {
+import Enums.TipoCelda;
+import Enums.TipoPlantas;
+import java.util.Scanner;
+import Farm.TypePlants.*;
+
+public abstract class Farm extends Thread{
     
-     //Inicializacion de celdas de agua
-        Water water1 = new Water();
-        Water water2 = new Water();
-        Water water3 = new Water();
+    protected TipoPlantas tipoPlanta;
+    Water water = new Water();
+    Scanner scan = new Scanner(System.in);
+    int precioSemilla;
+    int TiempoCosecha;
+    int cantidadCosecha;
+    int eleccion;
+    TipoPlantas tipoPlantas;
+    String nombre;
+    
+    public void Farm() throws InterruptedException{
         
-    public void Celdas() throws InterruptedException{
+        water.Water();
+        System.out.println("Ingrese el nombre de la planta");
+        nombre = scan.next();
+        System.out.println("Ingrese el precio de la semilla");
+        precioSemilla = scan.nextInt();
+        System.out.println("Ingrese la cantidad de cosecha que produce la planta");
+        cantidadCosecha = scan.nextInt();
+        System.out.println("Ingrese el tiempo de cosecha (segundos)");
+        TiempoCosecha = scan.nextInt();
+        System.out.println("Elija tipo de planta");
+        System.out.println("1) Tipo Grano \n2) Tipo Fruta");
+        eleccion = scan.nextInt();
+        switch(eleccion){
+            case 1:
+                tipoPlanta = tipoPlanta.GRANO;
+                //Grain grain = new Grain(precioSemilla, TiempoCosecha, tipoPlanta, nombre, cantidadCosecha);
+                //grain.ejecucionGrain();
+                break;
+            default:
+                tipoPlanta = tipoPlanta.FRUTAS;
+                //Fruits fruits = new Fruits(precioSemilla, TiempoCosecha, tipoPlanta, nombre, cantidadCosecha);
+                //fruits.ejecucionFruits();
+        }
         
-        //Inicializacion de celdas de Grama
-        
-        water1.tipoCelda();
-        water1.agregandoBarco();
-        water2.tipoCelda();
-        water2.agregandoBarco();
-        water3.tipoCelda();
-        water3.agregandoBarco();
-        
-           
-        //Inicializacion de celdas de Desierto
-  }
+            
+    }
 }

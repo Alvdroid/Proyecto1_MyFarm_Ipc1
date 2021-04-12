@@ -3,21 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Oro;
+package Farm;
+
+import javax.swing.JButton;
 
 /**
  *
  * @author alvin
  */
-public class Oro {
+public abstract class Celdas extends JButton{
     
-    private double oro;
+    public abstract void generarCeldas();
     
-    public double oro(){
-        int oro;
-        oro=1000;
-        this.oro = oro;
-        
-        return this.oro;
-    }
 }

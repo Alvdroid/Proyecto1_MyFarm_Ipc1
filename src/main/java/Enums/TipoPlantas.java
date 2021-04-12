@@ -3,21 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Oro;
+package Enums;
 
 /**
  *
  * @author alvin
  */
-public class Oro {
-    
-    private double oro;
-    
-    public double oro(){
-        int oro;
-        oro=1000;
-        this.oro = oro;
-        
-        return this.oro;
-    }
+public enum TipoPlantas {
+    GRANO,FRUTAS
 }

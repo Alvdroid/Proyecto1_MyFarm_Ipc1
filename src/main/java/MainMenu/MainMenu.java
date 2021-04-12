@@ -15,9 +15,7 @@ public class MainMenu {
     
     public void MainMenu() throws InterruptedException{
         
-        Farm farm = new Farm();
-        farm.Celdas();
-        Market.Market.market();
-        Reports.Reports.reports();
+        Farm farm = new Farm() {};
+        farm.Farm();
     }
 }
