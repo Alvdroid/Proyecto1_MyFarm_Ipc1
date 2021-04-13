@@ -1,12 +1,22 @@
 
 package JFrame;
 
+import Farmer.Farmer;
+import Farmer.Life;
+import Oro.Dinero;
+
 
 public class Inicio extends javax.swing.JFrame {
-
+    
+    //Creando player de tipo Farmer
+    Farmer player = new Farmer(100);
+    Life life = new Life();
+    Thread jugador = new Thread(player);
     public Inicio() {
         initComponents();
         setLocationRelativeTo(null);
+        jugador.start();
+        Dinero.setDinero(100);
     }
 
     
@@ -21,7 +31,6 @@ public class Inicio extends javax.swing.JFrame {
         TextFieldNombreJugador = new javax.swing.JTextField();
         TextFieldNickName = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MyFarm");
@@ -54,45 +63,31 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Salir");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(161, 161, 161)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(54, 54, 54)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TextFieldNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TextFieldNombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addComponent(jButton1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TextFieldNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextFieldNombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jButton1)))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,9 +106,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(TextFieldNickName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,20 +121,29 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldNickNameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            this.jButton1.add(this.TextFieldNombreJugador);
-            this.jButton1.add(this.TextFieldNickName);
-            this.dispose();
+        
+            //Creando MenuPrincipal y haciendolo visible
             new MenuPrincipal().setVisible(true);
-            MenuPrincipal.TextFieldMostrarNombre.setText(TextFieldNombreJugador.getText());
-            MenuPrincipal.TextFieldMostrarNickName.setText(TextFieldNickName.getText());
             
+            //Empezando hilo para la vida del jugador
+            Thread vida = new Thread(life);
+            vida.start();
             
+            //Guardando datos en variables
+            DatosJugador.Nombre = this.TextFieldNombreJugador.getText();
+            DatosJugador.NickName = this.TextFieldNickName.getText();
+            
+            //Enviado nombre y nickname del jugador
+            MenuPrincipal.TextFieldMostrarNombre.setText(DatosJugador.Nombre);
+            MenuPrincipal.TextFieldMostrarNickName.setText(DatosJugador.NickName);
+            
+            //Convirtiendo a string y enviando vida y dinero del jugador
+            String life = Integer.toString(Life.timeLife);
+            String dinero = Double.toString(Dinero.getDinero());
+            MenuPrincipal.vidaField.setText(life);
+            MenuPrincipal.dineroField.setText(dinero);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+   
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -180,7 +182,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldNickName;
     private javax.swing.JTextField TextFieldNombreJugador;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

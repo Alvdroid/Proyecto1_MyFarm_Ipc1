@@ -7,12 +7,12 @@ package Farm;
 
 import javax.swing.JButton;
 
-/**
- *
- * @author alvin
- */
+    
+
 public abstract class Celdas extends JButton{
     
-    public abstract void generarCeldas();
     
+    public abstract void GenerarCeldas();
+    
+   
 }

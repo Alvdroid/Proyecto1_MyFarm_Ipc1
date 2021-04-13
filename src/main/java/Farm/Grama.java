@@ -11,7 +11,7 @@ public class Grama extends Celdas{
     static ImageIcon imageGrama = new ImageIcon("1.png");
     
    @Override
-    public void generarCeldas() {
+    public void GenerarCeldas() {
         this.setIcon(new ImageIcon(imageGrama.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)));
     }
    

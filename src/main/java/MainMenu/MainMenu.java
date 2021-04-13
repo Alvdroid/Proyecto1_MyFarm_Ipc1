@@ -17,5 +17,7 @@ public class MainMenu {
         
         Farm farm = new Farm() {};
         farm.Farm();
+        Water water = new Water();
+        water.Water();
     }
 }

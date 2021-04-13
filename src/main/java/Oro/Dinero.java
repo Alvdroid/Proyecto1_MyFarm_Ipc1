@@ -9,15 +9,17 @@ package Oro;
  *
  * @author alvin
  */
-public class Oro {
+public class Dinero {
     
-    private double oro;
+    public static double dinero;
     
-    public double oro(){
-        int oro;
-        oro=1000;
-        this.oro = oro;
-        
-        return this.oro;
+    public static double getDinero() {
+        return dinero;
     }
+
+    public static void setDinero(double dinero) {
+        Dinero.dinero = dinero;
+    }
+    
+    
 }

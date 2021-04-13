@@ -10,7 +10,6 @@ import static java.lang.Thread.sleep;
 import javax.swing.ImageIcon;
 
 public class Water extends Celdas{
-    Scanner scan = new Scanner(System.in);
     
     static ImageIcon imageWater = new ImageIcon("2.png");
     protected TipoCelda tipoCelda;
@@ -19,7 +18,7 @@ public class Water extends Celdas{
     private static int numeroCelda;
     
     @Override
-    public void generarCeldas() {
+    public void GenerarCeldas() {
         this.setIcon(new ImageIcon(imageWater.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)));
     }
      protected void tipoCelda(){
@@ -32,33 +31,7 @@ public class Water extends Celdas{
     public void Water() throws InterruptedException{
         
         tipoCelda();
-        Water.numeroCelda++;
-        //while(this.barco!=0){
-            int respuesta = 0;
-            System.out.println("\nCelda de agua numero " + numeroCelda);
-            System.out.println("¿Desea agregar un barco?");
-            System.out.println("El maximo de barcos por celda es '1' ");
-            System.out.println("Precio del barco: Q100");
-            System.out.println("1) Si \n2) No");
-            respuesta = scan.nextInt();
-                switch(respuesta){
-                    case 1:
-                        System.out.println("Agregando barco...");
-                        sleep(numeroCelda*2000);
-                        Oro oro = new Oro();
-                        oro.oro();
-                        
-                        System.out.println("Barco agregado");
-                        this.barco = 1;
-                        cantidadPeces();
-                        break;
-                    case 2:
-                        System.out.println("Ningun barco agregado");
-                        break;
-                    default:
-                        System.out.println("Solo numeros '1' y '2'");
-          //      }
-        }
+        cantidadPeces();
     }
 
     
@@ -72,26 +45,18 @@ public class Water extends Celdas{
     public void cantidadPeces() throws InterruptedException{
         int cantidadPeces = 10;
         this.cantidadPeces = cantidadPeces;
-        System.out.println("La celda de agua contiene un maximo de 10 peces");
+        this.barco=1;
         
+        //Ciclo para disminuir los peces
         if (this.barco==1) {
-            
            for (int i = 0; cantidadPeces >= i; cantidadPeces--) {
-            System.out.println("Actualmente la celda de agua numero " + numeroCelda + " contiene " + cantidadPeces + " peces");
-            sleep(cantidadPeces*3000);
+            sleep(cantidadPeces*700);
             this.cantidadPeces = cantidadPeces;
-            
                 if (cantidadPeces == 0){
-                    System.out.println("Se elimino al barco de la celda para que crezcan peces");
-                    setBarco(0);
-                    System.out.println("Ahora tiene " +getBarco() + " barcos" );
+                    Productos.contadorAlimento = Productos.contadorAlimento +10;
+                    setBarco(0);//Eliminar el barco
                 } 
             }
-        
-        }
-        else {
-            System.out.println("La celda esta llena de peces");
-            
         }
     }
     

@@ -15,8 +15,6 @@ public class Grain extends Plants{
     }
     
     public void ejecucionGrain() throws InterruptedException{
-        System.out.println("Planta de tipo Grano");
-        System.out.println("Empezo el conteo regresivo de la cosecha");
         tiempoCosecha();
         
     }
@@ -28,10 +26,8 @@ public class Grain extends Plants{
         while (TiempoCosecha>0) {            
             TiempoCosecha--;//tiempo en segundos
             TiempoCosecha = TiempoCosecha;
-            System.out.println("Quedan " +TiempoCosecha+ " seg. para la cosecha");
             Thread.sleep(TiempoCosecha*1000);
         }
-        System.out.println("La planta " + Nombre + " esta lista para cosecharse");
     }
     @Override
     public TipoPlantas TipoPlanta(TipoPlantas tipoPlanta) {
